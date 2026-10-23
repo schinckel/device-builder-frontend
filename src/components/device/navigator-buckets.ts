@@ -28,6 +28,7 @@ export function deriveNavigatorBuckets(
     components,
     automations: topLevelAutomations,
   } = categorizeSections(parseYamlTopLevelSections(yaml), coreKeys);
+  core.splice(0, core.length, ...core.filter((section) => section.key !== "packages"));
   // ``parseYamlAutomations`` enumerates individual ``script:`` /
   // ``interval:`` list items as stable-keyed entries; drop the bare
   // top-level blocks so each automation shows up exactly once.
