@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { deriveNavigatorBuckets } from "../../../src/components/device/navigator-buckets.js";
+import { CORE_KEYS } from "../../../src/util/yaml-sections.js";
 
 describe("package section in device navigator", () => {
   it("keeps packages out of core sections while retaining other sections", () => {
@@ -14,7 +15,8 @@ describe("package section in device navigator", () => {
         "sensor:",
         "  - platform: uptime",
         "",
-      ].join("\n")
+      ].join("\n"),
+      CORE_KEYS
     );
 
     expect(buckets.core.map((section) => section.key)).not.toContain("packages");
